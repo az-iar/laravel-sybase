@@ -2,45 +2,24 @@
 
 namespace Uepg\LaravelSybase\Database\Query;
 
-use Illuminate\Database\Schema\Builder;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Grammars\Grammar as IlluminateGrammar;
 
 class Grammar extends IlluminateGrammar
 {
-    /**
-     * All of the available clause operators.
-     *
-     * @var array
-     */
     protected $operators = [
         '=', '<', '>', '<=', '>=', '!<', '!>', '<>', '!=',
         'like', 'not like', 'between', 'ilike',
         '&', '&=', '|', '|=', '^', '^=',
     ];
 
-    /**
-     * Builder for query.
-     *
-     * @var \Illuminate\Database\Schema\Builder
-     */
     protected $builder;
 
-    /**
-     * Get the builder.
-     *
-     * @return \Illuminate\Database\Schema\Builder
-     */
     public function getBuilder()
     {
         return $this->builder;
     }
 
-    /**
-     * Compile a select query into SQL.
-     *
-     * @param  \Illuminate\Database\Schema\Builder  $query
-     * @return string
-     */
     public function compileSelect(Builder $query)
     {
         $this->builder = $query;
@@ -50,13 +29,6 @@ class Grammar extends IlluminateGrammar
         return $this->concatenate($components);
     }
 
-    /**
-     * Compile the "select *" portion of the query.
-     *
-     * @param  \Illuminate\Database\Schema\Builder  $query
-     * @param  array  $columns
-     * @return string
-     */
     protected function compileColumns(Builder $query, $columns)
     {
         if (! is_null($query->aggregate)) {
@@ -76,13 +48,6 @@ class Grammar extends IlluminateGrammar
         return $select.$this->columnize($columns);
     }
 
-    /**
-     * Compile the "from" portion of the query.
-     *
-     * @param  \Illuminate\Database\Schema\Builder  $query
-     * @param  string  $table
-     * @return string
-     */
     protected function compileFrom(Builder $query, $table)
     {
         $from = parent::compileFrom($query, $table);
@@ -99,36 +64,16 @@ class Grammar extends IlluminateGrammar
         return $from;
     }
 
-    /**
-     * Compile the "limit" portions of the query.
-     *
-     * @param  \Illuminate\Database\Schema\Builder  $query
-     * @param  int  $limit
-     * @return string
-     */
     protected function compileLimit(Builder $query, $limit)
     {
         return '';
     }
 
-    /**
-     * Compile the "offset" portions of the query.
-     *
-     * @param  \Illuminate\Database\Schema\Builder  $query
-     * @param  int  $offset
-     * @return string
-     */
     protected function compileOffset(Builder $query, $offset)
     {
         return '';
     }
 
-    /**
-     * Compile a truncate table statement into SQL.
-     *
-     * @param  \Illuminate\Database\Schema\Builder  $query
-     * @return array
-     */
     public function compileTruncate(Builder $query)
     {
         return [
@@ -136,22 +81,11 @@ class Grammar extends IlluminateGrammar
         ];
     }
 
-    /**
-     * Get the format for database stored dates.
-     *
-     * @return string
-     */
     public function getDateFormat()
     {
         return 'Y-m-d H:i:s.000';
     }
 
-    /**
-     * Wrap a single string in keyword identifiers.
-     *
-     * @param  string  $value
-     * @return string
-     */
     protected function wrapValue($value)
     {
         if ($value === '*') {
