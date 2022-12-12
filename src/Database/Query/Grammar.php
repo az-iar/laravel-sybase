@@ -2,7 +2,7 @@
 
 namespace Uepg\LaravelSybase\Database\Query;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Query\Grammars\Grammar as IlluminateGrammar;
 
 class Grammar extends IlluminateGrammar
@@ -28,7 +28,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Get the builder.
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Schema\Builder
      */
     public function getBuilder()
     {
