@@ -21,7 +21,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Builder for query.
      *
-     * @var \Illuminate\Database\Query\Builder
+     * @var \Illuminate\Database\Schema\Builder
      */
     protected $builder;
 
@@ -38,7 +38,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Compile a select query into SQL.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Illuminate\Database\Schema\Builder  $query
      * @return string
      */
     public function compileSelect(Builder $query)
@@ -53,7 +53,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Compile the "select *" portion of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Illuminate\Database\Schema\Builder  $query
      * @param  array  $columns
      * @return string
      */
@@ -79,7 +79,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Compile the "from" portion of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Illuminate\Database\Schema\Builder  $query
      * @param  string  $table
      * @return string
      */
@@ -102,7 +102,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Compile the "limit" portions of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Illuminate\Database\Schema\Builder  $query
      * @param  int  $limit
      * @return string
      */
@@ -114,7 +114,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Compile the "offset" portions of the query.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Illuminate\Database\Schema\Builder  $query
      * @param  int  $offset
      * @return string
      */
@@ -126,7 +126,7 @@ class Grammar extends IlluminateGrammar
     /**
      * Compile a truncate table statement into SQL.
      *
-     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  \Illuminate\Database\Schema\Builder  $query
      * @return array
      */
     public function compileTruncate(Builder $query)
