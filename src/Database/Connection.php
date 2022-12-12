@@ -6,7 +6,7 @@ use Closure;
 use Doctrine\DBAL\Driver\PDOSqlsrv\Driver as DoctrineDriver;
 use Exception;
 use Illuminate\Database\Connection as IlluminateConnection;
-use Illuminate\Database\Schema\Builder;
+use Illuminate\Database\Query\Builder;
 use PDO;
 use Uepg\LaravelSybase\Database\Query\Grammar as QueryGrammar;
 use Uepg\LaravelSybase\Database\Query\Processor;
